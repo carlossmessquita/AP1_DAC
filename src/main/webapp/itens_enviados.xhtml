@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+	<h:head><title>CMAIL - Emails Enviados</title></h:head>
+	<h:body>
+		<h:form id="formulario">
+			<p:messages id="message" showDetail="true" closable="true">
+	            <p:autoUpdate/>
+	        </p:messages>
+			<p:panel header="Enviados - CMAIL">
+
+				<p:dataTable value="#{emailBean.lista}" var="e">
+					<p:column headerText="Destinatário"><p:outputLabel value="#{e.destinatario}"/></p:column>
+					<p:column headerText="Corpo">
+						<p:commandLink value="#{e.corpo}" action="editar_email">
+                            <f:setPropertyActionListener value="#{e}" target="#{emailBean.email}"/>
+                    	</p:commandLink>
+                   	</p:column>
+					<p:column headerText="Envio"><p:outputLabel value="#{e.dataEnvio}"/></p:column>		
+					<p:column headerText="Confirm. de Leitura">
+						<p:commandButton value="#{e.confirmaLeitura}" type="button" onclick="PF('dlg3').show()" icon="pi pi-check" styleClass="rounded-button">
+							<p:confirm type="popup"  message="Deseja confirmar leitura?" icon="pi pi-exclamation-triangle"/>
+						</p:commandButton>
+					</p:column>
+					<p:column>
+                         <p:commandButton alt="Visualizar" action="#{emailBean.visualizar}" ajax="false" icon="pi pi-search" styleClass="rounded-button ui-button-success">
+                             <f:setPropertyActionListener value="#{e}" target="#{emailBean.email}"/>
+                         </p:commandButton>
+                    </p:column>
+					<p:column>
+						<p:commandButton  action="#{emailBean.excluir}" ajax="false" icon="pi pi-times" styleClass="rounded-button ui-button-danger">
+							<f:setPropertyActionListener value="#{e}" target="#{emailBean.email}"/>
+						</p:commandButton>
+					</p:column>
+		
+				</p:dataTable>
+				
+				<p:button outcome="envio_email" value="Voltar" style="margin-top: 10px;" styleClass="ui-button-secondary"/>
+
+		        <p:confirmPopup global="true">
+		        	<p:commandButton value="Sim" type="button" styleClass="ui-confirm-popup-yes"  />
+            		<p:commandButton value="Não" type="button" styleClass="ui-confirm-popup-no ui-button-flat"/>
+        		</p:confirmPopup>
+
+			</p:panel>
+		</h:form>
+	</h:body>
+</html>

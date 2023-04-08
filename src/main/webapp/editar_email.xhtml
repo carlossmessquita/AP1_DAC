@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<h:head>
+		<title>CMAIL - Enviar Email</title>
+	</h:head>
+
+<h:body>
+	<h:form id="formulario">
+		<h:inputHidden value="{emailBean.email.id}"/>
+		<p:messages id="messages" showDetail="true" closable="true"><p:autoUpdate/></p:messages>
+
+		<p:panel header="Enviar Email - CMAIL" >
+			<p:panelGrid columns="2" >
+				<p:outputLabel value="Id" for="id"/>			
+				<p:inputText value="#{emailBean.email.id}" id="id" />	
+				
+				<p:outputLabel value="Destinatário" for="destinatario"/>			
+				<p:inputText value="#{emailBean.email.destinatario}" id="destinatario"/>				
+				
+				<p:outputLabel value="Corpo" for="corpo" />
+				<p:inputTextarea id="corpo" value="#{emailBean.email.corpo}" rows="6" cols="33"/>		
+						
+				<p:outputLabel value="Data de envio" for="dataEnvio" />			
+				<p:datePicker id="dataEnvio" value="#{emailBean.email.dataEnvio}" />
+				
+				<p:outputLabel value="Confirmação de Leitura?" for="confirmaLeitura"/>			
+				<p:selectBooleanCheckbox value="#{emailBean.email.confirmaLeitura}" itemLabel="Sim" id="confirmaLeitura"/>
+				
+				<p:button outcome="itens_enviados" value="Voltar" styleClass="ui-button-secondary"/>
+				
+				<p:commandButton value="Editar" action="#{emailBean.editar}" ajax="false"/>
+
+				
+			</p:panelGrid>
+		</p:panel>
+		
+	</h:form>
+</h:body>	
+</html>
