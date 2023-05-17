@@ -17,16 +17,16 @@
 		<p:panel header="Enviar Email - CMAIL">
 			<p:panelGrid columns="2">
 				<p:outputLabel value="Destinatário"/>
-				<p:inputText value="#{emailBean.email.destinatario}" required="true" requiredMessage="Campo Destinatário é obrigatório"/>
+				<p:inputText value="#{emailBean.email.destinatario}" required="true" requiredMessage="Campo obrigatório"/>
 				
 				<p:outputLabel value="Corpo"/>
-				<p:inputTextarea value="#{emailBean.email.corpo}" rows="6" cols="33" counterTemplate="{0} characters remaining." autoResize="true"/>
+				<p:inputTextarea value="#{emailBean.email.corpo}" rows="6" cols="33" counterTemplate="{0} characters remaining." autoResize="true" />
 				
 				<p:outputLabel value="Data de envio"/>
 				<p:datePicker id="basic" value="#{emailBean.email.dataEnvio}" />
 				
 				<p:outputLabel value="Confirmação de Leitura?"/>
-				<p:selectBooleanCheckbox value="#{emailBean.email.confirmaLeitura}" itemLabel="Sim"/>
+				<p:selectBooleanCheckbox value="#{emailBean.email.confirmaLeitura}" itemLabel="Sim" />
 				
 				<p:commandButton value="Salvar" action="#{emailBean.salvar}" update="formulario"/>
 				<p:button outcome="itens_enviados" value="Listar" icon="pi pi-search" styleClass="rounded-button ui-button-success"/>

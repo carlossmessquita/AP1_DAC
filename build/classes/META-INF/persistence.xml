@@ -6,7 +6,7 @@
     <persistence-unit name="integracaoPU">
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/emaildac" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost/emaildac_test" />
             <property name="javax.persistence.jdbc.user" value="postgres" />
             <property name="javax.persistence.jdbc.password" value="250899" />
 

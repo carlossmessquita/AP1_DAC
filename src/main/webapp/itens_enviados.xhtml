@@ -17,6 +17,8 @@
 
 				<p:dataTable value="#{emailBean.lista}" var="e">
 					<p:column headerText="Destinatário"><p:outputLabel value="#{e.destinatario}"/></p:column>
+					
+					<p:column headerText="Id"><p:outputLabel value="#{e.id}"></p:outputLabel></p:column>
 					<p:column headerText="Corpo">
 						<p:commandLink value="#{e.corpo}" action="editar_email">
                             <f:setPropertyActionListener value="#{e}" target="#{emailBean.email}"/>
